@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Приглашение на свадьбу</title>
+    <title>Приглашение на свадьбу | Илья & Диана</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(145deg, #fef9e6 0%, #f7e9cd 100%);
+            background: linear-gradient(145deg, #2c1810 0%, #3d2619 100%);
             font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
             display: flex;
             justify-content: center;
@@ -21,15 +21,14 @@
             padding: 20px;
         }
 
-        /* Анимированная открытка */
         .invitation {
             max-width: 550px;
             width: 100%;
             background: #fffdf8;
             border-radius: 48px 48px 48px 32px;
-            box-shadow: 0 30px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(240,210,150,0.3);
+            box-shadow: 0 30px 40px rgba(0,0,0,0.3);
             overflow: hidden;
-            animation: fadeSlideUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            animation: fadeSlideUp 0.8s ease-out forwards;
             opacity: 0;
             transform: translateY(30px);
         }
@@ -41,59 +40,87 @@
             }
         }
 
-        /* Анимированная рамка-конверт */
-        .hero {
-            background: linear-gradient(135deg, #f6d5a8, #e6be8a);
-            padding: 40px 20px 30px;
-            text-align: center;
+        .photo-section {
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, #f3d9b1, #e8c48a);
+            padding: 30px 20px 20px;
+            text-align: center;
         }
 
-        .hero::before {
-            content: "❤️";
-            font-size: 140px;
+        /* Место для фото — замени ссылку на свою! */
+        .couple-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            margin: 0 auto 15px;
+            display: block;
+            animation: photoGlow 2s ease-in-out infinite, floatPhoto 3s ease-in-out infinite;
+            background: #d4a373;
+            /* Если нет фото, покажет иконку */
+        }
+
+        @keyframes photoGlow {
+            0% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(255,215,150,0.7); }
+            50% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 12px rgba(255,215,150,0); }
+            100% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(255,215,150,0); }
+        }
+
+        @keyframes floatPhoto {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Падающие лепестки */
+        .flower {
             position: absolute;
-            bottom: -30px;
-            left: -30px;
-            opacity: 0.15;
-            transform: rotate(-15deg);
-            animation: floatHeart 4s infinite ease-in-out;
+            font-size: 20px;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: fall linear infinite;
         }
 
-        @keyframes floatHeart {
-            0% { transform: rotate(-15deg) translateY(0px); }
-            50% { transform: rotate(-15deg) translateY(-12px); }
-            100% { transform: rotate(-15deg) translateY(0px); }
-        }
-
-        .title {
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            color: #4a2e1f;
-            font-weight: 300;
-            border-bottom: 2px dashed #c49a6c;
-            display: inline-block;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .names {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: #2c1a0e;
-            text-shadow: 2px 2px 0 #f0dbb4;
+            color: #fff;
+            text-shadow: 3px 3px 0 #a0522d;
             margin: 15px 0 5px;
+            animation: textPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { text-shadow: 3px 3px 0 #a0522d; }
+            50% { text-shadow: 6px 6px 0 #c4713b; }
         }
 
         .date-place {
-            background: rgba(255,250,235,0.8);
+            background: rgba(255,255,245,0.95);
             border-radius: 60px;
-            padding: 12px 20px;
+            padding: 12px 24px;
             display: inline-block;
             margin-top: 15px;
-            font-size: 1.1rem;
-            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #5a3a28;
+            animation: bounceIn 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            80% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .info-section {
@@ -102,26 +129,42 @@
         }
 
         .info-block {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            animation: slideInLeft 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .info-block:nth-child(1) { animation-delay: 0.1s; }
+        .info-block:nth-child(2) { animation-delay: 0.3s; }
+        .info-block:nth-child(3) { animation-delay: 0.5s; }
+        .info-block:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .info-label {
             font-weight: bold;
-            color: #b47c44;
+            color: #c4863a;
             text-transform: uppercase;
             font-size: 0.8rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .info-text {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #3e2a1f;
             margin-top: 6px;
+            line-height: 1.4;
         }
 
         .rsvp-section {
-            background: #fef7e8;
-            padding: 20px 28px 35px;
+            background: linear-gradient(135deg, #fef7e8, #fff5e6);
+            padding: 25px 28px 35px;
             text-align: center;
         }
 
@@ -129,30 +172,43 @@
             font-size: 1.6rem;
             margin-bottom: 20px;
             color: #a5682a;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .form-link {
             display: inline-block;
-            background: #7c5f3a;
+            background: linear-gradient(135deg, #c4863a, #a5682a);
             color: white;
             text-decoration: none;
             font-size: 1.3rem;
             font-weight: bold;
-            padding: 14px 32px;
+            padding: 14px 40px;
             border-radius: 60px;
             transition: all 0.3s;
-            box-shadow: 0 5px 0 #4f351e;
+            box-shadow: 0 6px 0 #5a3a20;
             margin: 15px 0 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 6px 0 #5a3a20; }
+            50% { transform: scale(1.05); box-shadow: 0 8px 0 #5a3a20; }
+            100% { transform: scale(1); box-shadow: 0 6px 0 #5a3a20; }
         }
 
         .form-link:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 #4f351e;
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #5a3a20;
         }
 
         .small-note {
             font-size: 0.75rem;
-            color: #a58355;
+            color: #b8956a;
             margin-top: 15px;
         }
 
@@ -163,42 +219,92 @@
             background: #f4ecdb;
             color: #8b6946;
         }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373, #b5835a);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            border: 5px solid white;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            animation: floatPhoto 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body>
 <div class="invitation">
-    <div class="hero">
-        <div class="title">Свадебное приглашение</div>
+    <div class="photo-section">
+        <!-- ВАЖНО: Чтобы добавить фото молодожёнов, замени ссылку ниже -->
+        <!-- 
+            КАК ДОБАВИТЬ ФОТО:
+            1. Загрузи фото молодожёнов на любой бесплатный хостинг (например, imgbb.com или postimages.org)
+            2. Скопируй прямую ссылку на фото (должна заканчиваться на .jpg или .png)
+            3. Вставь её вместо "ССЫЛКА_НА_ФОТО" в строчке ниже
+            4. Либо раскомментируй строку с photo-placeholder и закомментируй img
+        -->
+        <img class="couple-photo" src="ССЫЛКА_НА_ФОТО" alt="Илья и Диана" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder" style="display: none;">💑</div>
+        
         <div class="names">Илья & Диана</div>
         <div class="date-place">
-            📅 12 июля 2026 · 16:00<br>
-            🌿 Усадьба «Берёзки», зал «Летний сад»
+            📅 2026 · 💒 Свадьба
         </div>
     </div>
 
     <div class="info-section">
         <div class="info-block">
-            <div class="info-label">📍 Как добраться</div>
-            <div class="info-text">Московская обл., дер. Дубки, усадьба «Берёзки»<br> Трансфер от метро «Аннино» в 15:00</div>
+            <div class="info-label">📆 ДАТА И ВРЕМЯ</div>
+            <div class="info-text">12 июля 2026 · 16:00</div>
         </div>
         <div class="info-block">
-            <div class="info-label">🎉 Программа</div>
-            <div class="info-text">16:00 — Встреча гостей<br> 17:00 — Церемония<br> 18:30 — Банкет и танцы до утра</div>
+            <div class="info-label">📍 МЕСТО ПРОВЕДЕНИЯ</div>
+            <div class="info-text">г. Гродно<br>Ресторан «Бакст»</div>
         </div>
         <div class="info-block">
-            <div class="info-label">💌 Пожелания</div>
-            <div class="info-text">Будем рады видеть вас в нарядной одежде. Цветы и улыбки приветствуются 🌸</div>
+            <div class="info-label">🎉 ПРОГРАММА ВЕЧЕРА</div>
+            <div class="info-text">16:00 — Сбор гостей<br>17:00 — Торжественная церемония<br>18:30 — Банкет и танцы</div>
+        </div>
+        <div class="info-block">
+            <div class="info-label">💌 DRESS CODE</div>
+            <div class="info-text">Вечерний наряд. Будем рады видеть вас красивыми ✨</div>
         </div>
     </div>
 
     <div class="rsvp-section">
         <div class="rsvp-title">Сможете разделить с нами этот день?</div>
-        <a href="https://forms.gle/rt58hKiLh63c9T1e8" class="form-link" target="_blank">✨ Ответить ✨</a>
-        <div class="small-note">Это займёт 20 секунд. Вы получите подтверждение сразу</div>
+        <a href="https://forms.gle/zz4EgmuDUtuVKd3h9" class="form-link" target="_blank">✨ Подтвердить присутствие ✨</a>
+        <div class="small-note">Нажмите на кнопку, чтобы ответить. Это займёт 20 секунд</div>
     </div>
     <footer>
-        С любовью, жених и невеста ❤️
+        С нетерпением ждём вас! ❤️ Илья и Диана
     </footer>
 </div>
+
+<script>
+    // Создаём падающие лепестки (анимация)
+    function createFlower() {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌸'];
+        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.left = Math.random() * 100 + '%';
+        flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        flower.style.animationDuration = (Math.random() * 5 + 4) + 's';
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(flower);
+        
+        setTimeout(() => {
+            flower.remove();
+        }, 10000);
+    }
+    
+    // Запускаем падающие цветы каждые 0.7 секунды
+    setInterval(createFlower, 700);
+</script>
 </body>
 </html>
