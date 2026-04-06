@@ -2,8 +2,19 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Важно для правильного масштаба на телефонах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Илья & Диана | Свадебное приглашение</title>
+    
+    <!-- Мета-теги для красивого превью в мессенджерах (Telegram, WhatsApp, Viber) -->
+    <meta property="og:title" content="Приглашение на свадьбу | Илья и Диана">
+    <meta property="og:description" content="12 июля 2026, Гродно, ресторан Бакст. Подтвердите присутствие.">
+    <meta property="og:image" content="https://i.ibb.co/nMgv1LHF/beee19647e7941b5b148aa5da17a139f-0-1775468884-9476.png">
+    <meta property="og:url" content="https://all4witamin.github.io/wedding-invite/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Илья и Диана | Свадебное приглашение</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,14 +25,15 @@
         }
 
         body {
-            background: #0a0a0a;
+            background: #050505;
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
         }
 
+        /* Контейнер — ровно под ширину телефона */
         .container {
             width: 100%;
             max-width: 500px;
@@ -31,326 +43,217 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
-        /* ========== ГЕРОЙ С ВИДЕО ========== */
+        /* ========== ВЕРХНЯЯ СЕКЦИЯ — ВИДЕО И ИМЕНА ========== */
         .hero {
             position: relative;
-            height: 90vh;
-            min-height: 600px;
-            overflow: hidden;
+            width: 100%;
+            background: #1a1a1a;
+            padding: 30px 20px 40px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             align-items: center;
             text-align: center;
-            padding: 50px 24px 60px;
+            border-bottom: 1px solid rgba(212,175,122,0.2);
         }
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        /* Сложный градиент поверх видео */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%);
-            z-index: 1;
-        }
-
-        /* Золотой ободок вокруг видео */
+        /* Рамка для видео — правильные пропорции */
         .video-frame {
-            position: relative;
-            z-index: 3;
-            width: 190px;
-            height: 190px;
+            width: 170px;
+            height: 170px;
             margin: 0 auto 20px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 30px 40px rgba(0,0,0,0.4), 0 0 0 3px rgba(212,175,122,0.6), 0 0 0 8px rgba(212,175,122,0.15);
-            animation: frameGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes frameGlow {
-            0% { box-shadow: 0 30px 40px rgba(0,0,0,0.4), 0 0 0 3px rgba(212,175,122,0.6), 0 0 0 8px rgba(212,175,122,0.15); }
-            50% { box-shadow: 0 30px 50px rgba(0,0,0,0.5), 0 0 0 3px rgba(212,175,122,1), 0 0 0 15px rgba(212,175,122,0.25); }
-            100% { box-shadow: 0 30px 40px rgba(0,0,0,0.4), 0 0 0 3px rgba(212,175,122,0.6), 0 0 0 8px rgba(212,175,122,0.15); }
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4), 0 0 0 3px rgba(212,175,122,0.5);
         }
 
         .video-frame video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.02);
-            transition: transform 0.6s ease;
+            display: block;
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            letter-spacing: 6px;
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 4px;
             color: #fff;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 3;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-            opacity: 0;
-            transform: translateY(20px);
+            margin-bottom: 5px;
         }
 
         .hero h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: 300;
-            letter-spacing: 5px;
-            color: rgba(255,250,235,0.85);
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 3;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-            opacity: 0;
-            transform: translateY(20px);
+            letter-spacing: 3px;
+            color: #d4af7a;
+            margin-bottom: 15px;
         }
 
         .hero .date {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            color: #d4af7a;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(12px);
-            padding: 8px 24px;
-            border-radius: 50px;
-            position: relative;
-            z-index: 3;
-            border: 0.5px solid rgba(212,175,122,0.3);
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* Стикер с обратным отсчётом (опционально) */
-        .countdown-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            background: rgba(0,0,0,0.6);
+            font-size: 1.1rem;
+            color: rgba(255,250,235,0.8);
+            background: rgba(0,0,0,0.4);
             backdrop-filter: blur(8px);
-            padding: 6px 16px;
+            padding: 6px 20px;
             border-radius: 40px;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: #d4af7a;
-            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
         }
 
-        /* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+        /* ========== ОСНОВНОЙ КОНТЕНТ — КРУПНЫЙ И ЧИТАЕМЫЙ ========== */
         .content {
-            background: #0c0c0c;
-            padding: 50px 28px 60px;
+            padding: 35px 24px 50px;
             flex: 1;
-            position: relative;
         }
 
-        /* Золотая линия-разделитель */
         .gold-divider {
-            width: 70px;
+            width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af7a, #d4af7a, transparent);
-            margin: 0 auto 40px;
+            background: #d4af7a;
+            margin: 0 auto 30px;
         }
 
-        /* Место проведения */
+        /* Блок места */
         .location-section {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 35px;
         }
 
         .location-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             color: #8a7a60;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .location-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 500;
-            color: #e8e0d0;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
+            color: #f0e8d8;
+            margin-bottom: 5px;
         }
 
         .location-address {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: #9a8a70;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: #b0a088;
+            line-height: 1.4;
         }
 
-        /* Карточки с расписанием — стеклянный эффект */
+        /* Карточки расписания — крупные и удобные для пальца */
         .schedule {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin: 45px 0;
+            gap: 14px;
+            margin: 35px 0;
         }
 
         .schedule-card {
-            background: rgba(30, 30, 35, 0.6);
-            backdrop-filter: blur(10px);
-            border: 0.5px solid rgba(212,175,122,0.2);
+            background: rgba(25, 25, 30, 0.8);
             border-radius: 20px;
-            padding: 18px 20px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .schedule-card:hover {
-            border-color: rgba(212,175,122,0.5);
-            transform: translateX(5px);
+            border: 0.5px solid rgba(212,175,122,0.2);
         }
 
         .schedule-time {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #d4af7a;
         }
 
         .schedule-event {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: #c8c0b0;
-            font-weight: 300;
+            font-size: 0.9rem;
+            color: #ddd0c0;
+            font-weight: 400;
         }
 
-        /* Dress code — элегантно */
+        /* Dress code */
         .dresscode {
-            background: linear-gradient(135deg, #1a1a1f 0%, #121215 100%);
-            border: 0.5px solid rgba(212,175,122,0.25);
-            border-radius: 24px;
-            padding: 28px 20px;
+            background: #121215;
+            border-radius: 20px;
+            padding: 22px 20px;
             text-align: center;
-            margin: 40px 0;
+            margin: 35px 0;
+            border: 0.5px solid rgba(212,175,122,0.15);
         }
 
         .dresscode-icon {
             font-size: 1.8rem;
-            margin-bottom: 12px;
-            opacity: 0.7;
-            letter-spacing: 8px;
+            margin-bottom: 8px;
+            letter-spacing: 6px;
         }
 
         .dresscode-text {
-            font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #b8a880;
+            letter-spacing: 1.5px;
+            color: #c8b898;
             text-transform: uppercase;
         }
 
-        /* RSVP секция — главный призыв */
+        /* RSVP кнопка */
         .rsvp-section {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
+            margin-top: 30px;
         }
 
         .rsvp-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 400;
-            color: #e8e0d0;
-            margin-bottom: 12px;
+            color: #f0e8d8;
+            margin-bottom: 10px;
         }
 
         .rsvp-subtitle {
-            font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
             color: #8a7a60;
-            margin-bottom: 30px;
-            line-height: 1.5;
+            margin-bottom: 25px;
+            line-height: 1.4;
         }
 
         .rsvp-button {
             display: inline-block;
-            background: linear-gradient(135deg, #d4af7a 0%, #b8945e 100%);
+            background: linear-gradient(135deg, #d4af7a, #b8945e);
             color: #0c0c0c;
             text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 14px 38px;
+            padding: 14px 35px;
             border-radius: 50px;
-            transition: all 0.4s ease;
-            font-weight: 500;
-            box-shadow: 0 5px 20px rgba(212,175,122,0.3);
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(212,175,122,0.3);
+            transition: transform 0.2s;
         }
 
         .rsvp-button:active {
-            transform: scale(0.96);
-            box-shadow: 0 2px 10px rgba(212,175,122,0.2);
+            transform: scale(0.97);
         }
 
-        /* Footer */
         .footer {
             background: #060606;
-            color: #5a4a3a;
             text-align: center;
-            padding: 25px 20px;
-            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
             font-size: 0.6rem;
-            letter-spacing: 2px;
-            border-top: 0.5px solid rgba(212,175,122,0.15);
+            color: #5a4a3a;
+            letter-spacing: 1px;
+            border-top: 0.5px solid rgba(212,175,122,0.1);
         }
 
-        /* Анимации */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        /* Анимированная золотая линия */
-        .shimmer-line {
-            background: linear-gradient(90deg, transparent, #d4af7a, #d4af7a, transparent);
-            background-size: 200% auto;
-            animation: shimmer 2s infinite;
-        }
-
-        /* Появление элементов при скролле */
+        /* Анимация появления при скролле */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(25px);
-            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .scroll-reveal.revealed {
@@ -358,51 +261,41 @@
             transform: translateY(0);
         }
 
-        /* Адаптив */
         @media (max-width: 450px) {
-            .hero h1 { font-size: 2.4rem; letter-spacing: 4px; }
-            .video-frame { width: 160px; height: 160px; }
+            .video-frame { width: 150px; height: 150px; }
+            .hero h1 { font-size: 2.2rem; }
             .location-name { font-size: 1.6rem; }
-            .schedule-card { flex-direction: column; text-align: center; gap: 8px; }
-            .content { padding: 40px 20px 50px; }
+            .schedule-card { flex-direction: column; gap: 6px; text-align: center; }
+            .schedule-time { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- Герой с видео -->
+    <!-- Верхняя секция с видео и именами -->
     <div class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://files.catbox.moe/3mnr4s.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-        
         <div class="video-frame">
             <video autoplay muted loop playsinline>
                 <source src="https://files.catbox.moe/3mnr4s.mp4" type="video/mp4">
             </video>
         </div>
-        
         <h1>Илья & Диана</h1>
         <h2>Приглашают на свадьбу</h2>
         <div class="date">12 июля 2026</div>
-        <div class="countdown-badge">❤️ До нашей свадьбы</div>
     </div>
 
-    <!-- Контент -->
+    <!-- Основной контент -->
     <div class="content">
         <div class="gold-divider"></div>
 
-        <!-- Место проведения -->
         <div class="location-section scroll-reveal">
             <div class="location-label">Торжество состоится</div>
             <div class="location-name">Ресторан «Бакст»</div>
             <div class="location-address">г. Гродно, ул. Советская 18</div>
         </div>
 
-        <div class="gold-divider shimmer-line"></div>
+        <div class="gold-divider"></div>
 
-        <!-- Расписание в карточках -->
         <div class="schedule">
             <div class="schedule-card scroll-reveal">
                 <span class="schedule-time">16:00</span>
@@ -420,18 +313,15 @@
 
         <div class="gold-divider"></div>
 
-        <!-- Dress code -->
         <div class="dresscode scroll-reveal">
             <div class="dresscode-icon">👔  👗  👠</div>
-            <div class="dresscode-text">Dress code: вечерний наряд<br>Приветствуются светлые тона и элегантность</div>
+            <div class="dresscode-text">Dress code: вечерний наряд<br>Приветствуются светлые тона</div>
         </div>
 
-        <!-- RSVP -->
         <div class="rsvp-section scroll-reveal">
             <div class="rsvp-title">Подтвердите присутствие</div>
             <div class="rsvp-subtitle">
-                Пожалуйста, ответьте до 1 июня 2026<br>
-                Это поможет нам лучше подготовиться
+                Пожалуйста, ответьте до 1 июня 2026
             </div>
             <a href="https://forms.gle/zz4EgmuDUtuVKd3h9" class="rsvp-button" target="_blank">Ответить →</a>
         </div>
@@ -443,17 +333,14 @@
 </div>
 
 <script>
-    // Плавное появление при скролле
     const revealElements = document.querySelectorAll('.scroll-reveal');
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
-    
+    }, { threshold: 0.1 });
     revealElements.forEach(el => observer.observe(el));
 </script>
 </body>
