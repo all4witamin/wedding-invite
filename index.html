@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Приглашение на свадьбу | Илья & Диана</title>
+    <!-- Подключаем красивые шрифты Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,299 +14,377 @@
         }
 
         body {
-            background: linear-gradient(145deg, #2c1810 0%, #3d2619 100%);
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #0a0a0a;
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            padding: 20px;
         }
 
-        .invitation {
-            max-width: 550px;
-            width: 100%;
-            background: #fffdf8;
-            border-radius: 48px 48px 48px 32px;
-            box-shadow: 0 30px 40px rgba(0,0,0,0.3);
+        /* Главный контейнер */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #faf7f2;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+
+        /* Герой-секция с фото */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding: 60px 30px;
             overflow: hidden;
-            animation: fadeSlideUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
-        @keyframes fadeSlideUp {
+        /* Декоративный фон */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,215,150,0.08)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        /* Фото рамка */
+        .photo-frame {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 40px;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 1px solid rgba(255,215,150,0.5);
+            border-radius: 4px;
+        }
+
+        .couple-photo {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(1.1);
+            transition: all 0.6s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: rgba(255,255,245,0.8);
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #d4af7a;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            padding: 12px 28px;
+            border-radius: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Основной контент */
+        .content {
+            background: #faf7f2;
+            padding: 60px 32px;
+        }
+
+        /* Раздел с местом */
+        .location-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .location-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b4946c;
+            margin-bottom: 15px;
+        }
+
+        .location-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .location-address {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #7a6a5a;
+            line-height: 1.6;
+        }
+
+        /* Разделитель */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #d4af7a;
+            margin: 40px auto;
+        }
+
+        /* Секция с расписанием */
+        .schedule {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .schedule-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #b4946c;
+            min-width: 100px;
+        }
+
+        .schedule-event {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #4a4a4a;
+            font-weight: 300;
+        }
+
+        /* Dress code блок */
+        .dresscode {
+            background: #ede6db;
+            padding: 30px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 4px;
+        }
+
+        .dresscode-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            opacity: 0.7;
+        }
+
+        .dresscode-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #5a4a3a;
+            text-transform: uppercase;
+        }
+
+        /* RSVP секция */
+        .rsvp-section {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid #e0d6c8;
+        }
+
+        .rsvp-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #8a7a6a;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .rsvp-button {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 16px 48px;
+            border-radius: 0;
+            transition: all 0.4s ease;
+            border: 1px solid #1a1a2e;
+        }
+
+        .rsvp-button:hover {
+            background: transparent;
+            color: #1a1a2e;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: #8a8a7a;
+            text-align: center;
+            padding: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .photo-section {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f3d9b1, #e8c48a);
-            padding: 30px 20px 20px;
-            text-align: center;
-        }
-
-        /* Место для фото — замени ссылку на свою! */
-        .couple-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-            margin: 0 auto 15px;
-            display: block;
-            animation: photoGlow 2s ease-in-out infinite, floatPhoto 3s ease-in-out infinite;
-            background: #d4a373;
-            /* Если нет фото, покажет иконку */
-        }
-
-        @keyframes photoGlow {
-            0% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(255,215,150,0.7); }
-            50% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 12px rgba(255,215,150,0); }
-            100% { box-shadow: 0 15px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(255,215,150,0); }
-        }
-
-        @keyframes floatPhoto {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Падающие лепестки */
-        .flower {
-            position: absolute;
-            font-size: 20px;
-            opacity: 0.6;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .names {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 3px 3px 0 #a0522d;
-            margin: 15px 0 5px;
-            animation: textPulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes textPulse {
-            0%, 100% { text-shadow: 3px 3px 0 #a0522d; }
-            50% { text-shadow: 6px 6px 0 #c4713b; }
-        }
-
-        .date-place {
-            background: rgba(255,255,245,0.95);
-            border-radius: 60px;
-            padding: 12px 24px;
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #5a3a28;
-            animation: bounceIn 0.6s ease-out 0.3s both;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            80% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .info-section {
-            padding: 30px 28px 20px;
-            border-bottom: 1px solid #f0e0c0;
-        }
-
-        .info-block {
-            margin-bottom: 25px;
-            animation: slideInLeft 0.5s ease-out forwards;
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
             opacity: 0;
-            transform: translateX(-20px);
         }
 
-        .info-block:nth-child(1) { animation-delay: 0.1s; }
-        .info-block:nth-child(2) { animation-delay: 0.3s; }
-        .info-block:nth-child(3) { animation-delay: 0.5s; }
-        .info-block:nth-child(4) { animation-delay: 0.7s; }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .photo-frame, .hero h1, .hero h2, .hero .date {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
         }
+        .photo-frame { animation-delay: 0.1s; }
+        .hero h1 { animation-delay: 0.3s; }
+        .hero h2 { animation-delay: 0.5s; }
+        .hero .date { animation-delay: 0.7s; }
 
-        .info-label {
-            font-weight: bold;
-            color: #c4863a;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        .info-text {
-            font-size: 1.15rem;
-            color: #3e2a1f;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        .rsvp-section {
-            background: linear-gradient(135deg, #fef7e8, #fff5e6);
-            padding: 25px 28px 35px;
-            text-align: center;
-        }
-
-        .rsvp-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: #a5682a;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .form-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #c4863a, #a5682a);
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            padding: 14px 40px;
-            border-radius: 60px;
-            transition: all 0.3s;
-            box-shadow: 0 6px 0 #5a3a20;
-            margin: 15px 0 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 6px 0 #5a3a20; }
-            50% { transform: scale(1.05); box-shadow: 0 8px 0 #5a3a20; }
-            100% { transform: scale(1); box-shadow: 0 6px 0 #5a3a20; }
-        }
-
-        .form-link:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #5a3a20;
-        }
-
-        .small-note {
-            font-size: 0.75rem;
-            color: #b8956a;
-            margin-top: 15px;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.7rem;
-            padding: 15px;
-            background: #f4ecdb;
-            color: #8b6946;
-        }
-
-        .photo-placeholder {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4a373, #b5835a);
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            border: 5px solid white;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-            animation: floatPhoto 3s ease-in-out infinite;
+        /* Адаптив */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; letter-spacing: 5px; }
+            .couple-photo { width: 220px; height: 220px; }
+            .content { padding: 40px 24px; }
+            .location-name { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-<div class="invitation">
-    <div class="photo-section">
-        <!-- ВАЖНО: Чтобы добавить фото молодожёнов, замени ссылку ниже -->
-        <!-- 
-            КАК ДОБАВИТЬ ФОТО:
-            1. Загрузи фото молодожёнов на любой бесплатный хостинг (например, imgbb.com или postimages.org)
-            2. Скопируй прямую ссылку на фото (должна заканчиваться на .jpg или .png)
-            3. Вставь её вместо "ССЫЛКА_НА_ФОТО" в строчке ниже
-            4. Либо раскомментируй строку с photo-placeholder и закомментируй img
-        -->
-        <img class="couple-photo" src="ССЫЛКА_НА_ФОТО" alt="Илья и Диана" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="photo-placeholder" style="display: none;">💑</div>
-        
-        <div class="names">Илья & Диана</div>
-        <div class="date-place">
-            📅 2026 · 💒 Свадьба
+<div class="container">
+    <!-- Герой с фото -->
+    <div class="hero">
+        <div class="photo-frame">
+            <!-- ВСТАВЬ ССЫЛКУ НА ФОТО ВНИЗУ -->
+            <img class="couple-photo" src="https://ibb.co/kg2xdMQk" alt="Илья и Диана" onerror="this.src='https://placehold.co/400x400/f0e6d8/b4946c?text=ФОТО+МОЛОДОЖЁНОВ&font=playfair'">
+        </div>
+        <h1>Илья & Диана</h1>
+        <h2>Приглашают на свадьбу</h2>
+        <div class="date">12 июля 2026</div>
+    </div>
+
+    <!-- Контент -->
+    <div class="content">
+        <!-- Место проведения -->
+        <div class="location-section animate" style="animation-delay: 0.1s;">
+            <div class="location-label">Торжество состоится</div>
+            <div class="location-name">Ресторан «Бакст»</div>
+            <div class="location-address">г. Гродно, ул. Советская 18</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Расписание -->
+        <div class="schedule">
+            <div class="schedule-item animate" style="animation-delay: 0.2s;">
+                <span class="schedule-time">16:00</span>
+                <span class="schedule-event">Встреча гостей / Welcome drink</span>
+            </div>
+            <div class="schedule-item animate" style="animation-delay: 0.3s;">
+                <span class="schedule-time">17:00</span>
+                <span class="schedule-event">Торжественная церемония</span>
+            </div>
+            <div class="schedule-item animate" style="animation-delay: 0.4s;">
+                <span class="schedule-time">18:30</span>
+                <span class="schedule-event">Свадебный ужин и танцы</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Dress code -->
+        <div class="dresscode animate" style="animation-delay: 0.5s;">
+            <div class="dresscode-icon">👔👗</div>
+            <div class="dresscode-text">Dress code: вечерний наряд<br>Приветствуются светлые тона</div>
+        </div>
+
+        <!-- RSVP блок -->
+        <div class="rsvp-section animate" style="animation-delay: 0.6s;">
+            <div class="rsvp-title">Подтвердите присутствие</div>
+            <div class="rsvp-subtitle">
+                Пожалуйста, ответьте до 1 июня 2026<br>
+                Это поможет нам лучше подготовиться к празднику
+            </div>
+            <a href="https://forms.gle/zz4EgmuDUtuVKd3h9" class="rsvp-button" target="_blank">Ответить →</a>
         </div>
     </div>
 
-    <div class="info-section">
-        <div class="info-block">
-            <div class="info-label">📆 ДАТА И ВРЕМЯ</div>
-            <div class="info-text">12 июля 2026 · 16:00</div>
-        </div>
-        <div class="info-block">
-            <div class="info-label">📍 МЕСТО ПРОВЕДЕНИЯ</div>
-            <div class="info-text">г. Гродно<br>Ресторан «Бакст»</div>
-        </div>
-        <div class="info-block">
-            <div class="info-label">🎉 ПРОГРАММА ВЕЧЕРА</div>
-            <div class="info-text">16:00 — Сбор гостей<br>17:00 — Торжественная церемония<br>18:30 — Банкет и танцы</div>
-        </div>
-        <div class="info-block">
-            <div class="info-label">💌 DRESS CODE</div>
-            <div class="info-text">Вечерний наряд. Будем рады видеть вас красивыми ✨</div>
-        </div>
+    <div class="footer">
+        С нетерпением ждём вас в этот особенный день
     </div>
-
-    <div class="rsvp-section">
-        <div class="rsvp-title">Сможете разделить с нами этот день?</div>
-        <a href="https://forms.gle/zz4EgmuDUtuVKd3h9" class="form-link" target="_blank">✨ Подтвердить присутствие ✨</a>
-        <div class="small-note">Нажмите на кнопку, чтобы ответить. Это займёт 20 секунд</div>
-    </div>
-    <footer>
-        С нетерпением ждём вас! ❤️ Илья и Диана
-    </footer>
 </div>
 
+<!-- Плавное появление при скролле -->
 <script>
-    // Создаём падающие лепестки (анимация)
-    function createFlower() {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌸'];
-        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-        flower.style.left = Math.random() * 100 + '%';
-        flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        flower.style.animationDuration = (Math.random() * 5 + 4) + 's';
-        flower.style.animationDelay = Math.random() * 5 + 's';
-        document.body.appendChild(flower);
-        
-        setTimeout(() => {
-            flower.remove();
-        }, 10000);
-    }
+    const animateElements = document.querySelectorAll('.animate');
     
-    // Запускаем падающие цветы каждые 0.7 секунды
-    setInterval(createFlower, 700);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    animateElements.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
